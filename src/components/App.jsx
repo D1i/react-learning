@@ -10,15 +10,23 @@ export default class InitInputAndButton extends React.component {
   }
 
   handleChange(event) {
-    this.setState({inputText: event.target.value});
+    this.setState((state, props) => {
+      return {
+        inputText: props.event.target.value
+      }
+    });
   }
 
   addNote() {
-    this.setState({noteList: this.state.noteList.slice().push(this.state.inputText)});
+    this.setState((state, props) =>{
+      noteList: state.noteList.slice().push(props.state.inputText)
+    });
   }
 
   removeNoteAll() {
-    this.setState({noteList: []});
+    this.setState((state, props) => {
+      noteList: []
+    });
   }
 
 

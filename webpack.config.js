@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   watch: true,
@@ -19,6 +19,16 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            plugins: [
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-syntax-jsx",
+            ],
+            presets: [
+              "@babel/preset-react",
+              "@babel/preset-env",
+            ],
+          },
         },
       },
       {
