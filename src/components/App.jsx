@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class InitInputAndButton extends React.component {
+export default class InitInputAndButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,50 +9,65 @@ export default class InitInputAndButton extends React.component {
     };
   }
 
-  handleChange(event) {
-    this.setState((state, props) => {
-      return {
-        inputText: props.event.target.value
-      }
-    });
-  }
+  handleChange = (event) => this.setState({inputText: event.target.value });
 
-  addNote() {
-    this.setState((state, props) =>{
-      noteList: state.noteList.slice().push(props.state.inputText)
-    });
-  }
 
-  removeNoteAll() {
-    this.setState((state, props) => {
+  addNote = () => {
+    if (this.state.inputText === "") {
+      return;
+    }
+    this.setState((state, props) => ({
+      noteList: [...state.noteList, state.inputText]
+    }));
+    this.setState((state, props) => ({
+      inputText: ""
+    }))
+  };
+
+  clearNoteList = () => {
+    this.setState((state, props) => ({
       noteList: []
-    });
-  }
+    }));
+  };
 
+
+  render() {
+    const inputText = this.state.inputText;
+    const noteList = this.state.noteList;
+
+  return (
+    <div>
+      <input
+        type="text"
+        onChange={this.handleChange}
+        value={inputText}
+      />
+      <button onClick={this.addNote}>ADD</button>
+      <button onClick={this.clearNoteList}>CLEAR</button>
+        <CreateElementContainerNoteLists noteList={noteList} />
+    </div>
+  )
+}
+
+}
+
+class CreateElementContainerNoteLists extends React.Component {
 
   render() {
     return (
-      <div>
-        <input type="text" onChange={this.handleChange} />
-        <button onClick={this.addNote} >Добавить</button>
-        <button onClick={this.removeNoteAll} >Очистить</button>
-        <ul>
-          <CreateElementNoteList />
-        </ul>
-      </div>
-    );
+      <ul>
+        {this.props.noteList.map((value) =>
+        createNote(value)
+        ).reverse()}
+      </ul>
+    )
   }
 }
 
-class CreateElementNoteList extends React.component {
-  render() {
-    const noteList = this.props.noteList.slice;
-    noteList.forEach((value) => {
-      return (
-        <li>
-          {value}
-        </li>
-      )
-    })
-  }
+function createNote(textNote) {
+    return (
+      <li>
+        {textNote}
+      </li>
+    )
 }
