@@ -11,7 +11,6 @@ export default class InitInputAndButton extends React.Component {
 
   handleChange = (event) => this.setState({inputText: event.target.value });
 
-
   addNote = () => {
     if (this.state.inputText === "") {
       return;
@@ -30,11 +29,9 @@ export default class InitInputAndButton extends React.Component {
     }));
   };
 
-
   render() {
     const inputText = this.state.inputText;
     const noteList = this.state.noteList;
-
   return (
     <div>
       <input
@@ -48,11 +45,9 @@ export default class InitInputAndButton extends React.Component {
     </div>
   )
 }
-
 }
 
 class CreateElementContainerNoteLists extends React.Component {
-
   render() {
     return (
       <ul>
