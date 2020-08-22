@@ -1,8 +1,9 @@
 import React from 'react';
 
-function createButtonAdd(methodAddNote, value) {
+function createButtonAdd(methodAddNote, value, clearFiledFunction) {
   function funcrionOfAddNote() {
-    methodAddNote(value)
+    methodAddNote(value);
+    clearFiledFunction()
   }
   return (
     <button onClick={funcrionOfAddNote}>Добавить город в список</button>

@@ -13,6 +13,9 @@ class CreateFiledOfInputAndAddButtons extends React.Component {
   handleChange = (event) => {
     this.setState({ inputValue: event.target.value });
   };
+  clearFiled = () => {
+    this.setState({ inputValue: "" });
+  };
 
   render () {
 
@@ -22,7 +25,7 @@ class CreateFiledOfInputAndAddButtons extends React.Component {
         type="text"
         onChange={this.handleChange}
         value={this.state.inputValue} />
-        {createButtonAdd(this.props.addNote, this.state.inputValue)}
+        {createButtonAdd(this.props.addNote, this.state.inputValue, this.clearFiled)}
         {createButtonClear(this.props.clearNoteList)}
       </div>
     )
