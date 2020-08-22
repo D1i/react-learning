@@ -1,5 +1,8 @@
 import React from 'react';
 
+import createElementContainerNoteList from "./createContainerNoteList/createContainerNoteList.jsx";
+import CreateFiledOfInputAndAddButtons from "./createButtonsAndInputs/createFieldOfInput";
+
 export default class InitInputAndButton extends React.Component {
   constructor(props) {
     super(props);
@@ -9,60 +12,32 @@ export default class InitInputAndButton extends React.Component {
     };
   }
 
-  handleChange = (event) => this.setState({inputText: event.target.value });
-
-  addNote = () => {
-    if (this.state.inputText === "") {
+  addNote = (value) => {
+    if (value === "") {
       return;
     }
     this.setState((state, props) => ({
-      noteList: [...state.noteList, state.inputText]
+      noteList: [...state.noteList, value]
     }));
-    this.setState((state, props) => ({
-      inputText: ""
-    }))
+    this.setState({inputText: ""})
   };
 
   clearNoteList = () => {
-    this.setState((state, props) => ({
-      noteList: []
-    }));
+    this.setState({noteList: []});
   };
 
   render() {
     const inputText = this.state.inputText;
     const noteList = this.state.noteList;
-  return (
-    <div>
-      <input
-        type="text"
-        onChange={this.handleChange}
-        value={inputText}
-      />
-      <button onClick={this.addNote}>ADD</button>
-      <button onClick={this.clearNoteList}>CLEAR</button>
-        <CreateElementContainerNoteLists noteList={noteList} />
-    </div>
-  )
-}
-}
-
-class CreateElementContainerNoteLists extends React.Component {
-  render() {
     return (
-      <ul>
-        {this.props.noteList.map((value) =>
-        createNote(value)
-        ).reverse()}
-      </ul>
+      <div>
+        <CreateFiledOfInputAndAddButtons
+          functionOfAddNote={this.addNote}
+          addNote={this.addNote}
+          clearNoteList={this.clearNoteList}
+        />
+        {createElementContainerNoteList(this.state.noteList)}
+      </div>
     )
   }
-}
-
-function createNote(textNote) {
-    return (
-      <li>
-        {textNote}
-      </li>
-    )
 }
