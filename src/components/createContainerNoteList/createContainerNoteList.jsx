@@ -1,14 +1,15 @@
 import React from 'react';
-import createNote from './createNote.jsx';
 
-function createElementContainerNoteList(noteList) {
+function CreateElementContainerNoteList(props) {
   return (
     <ul>
-      {noteList.map((value) =>
-        createNote(value)
+      {props.noteList.map((value) =>
+        <li key={value + " " + Math.random()}>
+          {value}
+        </li>
       ).reverse()}
     </ul>
   )
 }
 
-export default createElementContainerNoteList;
+export default CreateElementContainerNoteList;

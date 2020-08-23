@@ -2,8 +2,9 @@ import React from 'react';
 
 import createButtonAdd from '../createButtonsAndInputs/createButtonAdd.jsx';
 import createButtonClear from '../createButtonsAndInputs/createButtonClear.jsx';
+import HintsContainer from "../searchHints/CreateSearchHintsElements.jsx"
 
-class CreateFiledOfInputAndAddButtons extends React.Component {
+class CreateInputBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,22 +17,29 @@ class CreateFiledOfInputAndAddButtons extends React.Component {
   clearFiled = () => {
     this.setState({ inputValue: "" });
   };
+  setInputValue = (event) => {
+    this.setState({inputValue: event.value})
+  };
 
   render () {
-
     return (
       <div>
         <input
-        type="text"
+        type="search"
         onChange={this.handleChange}
         value={this.state.inputValue}
         id="address-input"
         />
         {createButtonAdd(this.props.addNote, this.state.inputValue, this.clearFiled)}
         {createButtonClear(this.props.clearNoteList)}
+        <br/>
+        <HintsContainer
+          inputValue={this.state.inputValue}
+          setInputValue={this.props.setInputValue}
+        />
       </div>
     )
   }
 }
 
-export default CreateFiledOfInputAndAddButtons;
+export default CreateInputBar;

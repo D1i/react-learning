@@ -1,7 +1,7 @@
 import React from 'react';
 
-import createElementContainerNoteList from "./createContainerNoteList/createContainerNoteList.jsx";
-import CreateFiledOfInputAndAddButtons from "./createButtonsAndInputs/createFieldOfInputAndButtons";
+import CreateElementContainerNoteList from "./createContainerNoteList/CreateContainerNoteList.jsx";
+import CreateInputBar from "./createButtonsAndInputs/InputBar";
 
 export default class InitInputAndButton extends React.Component {
   constructor(props) {
@@ -28,12 +28,14 @@ export default class InitInputAndButton extends React.Component {
     const noteList = this.state.noteList;
     return (
       <div>
-        <CreateFiledOfInputAndAddButtons
+        <CreateInputBar
           functionOfAddNote={this.addNote}
           addNote={this.addNote}
           clearNoteList={this.clearNoteList}
         />
-        {createElementContainerNoteList(this.state.noteList)}
+        <CreateElementContainerNoteList
+          noteList={this.state.noteList}
+        />
       </div>
     )
   }

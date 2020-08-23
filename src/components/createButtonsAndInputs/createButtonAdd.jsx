@@ -6,7 +6,7 @@ function createButtonAdd(methodAddNote, value, clearFiledFunction) {
     clearFiledFunction()
   }
   return (
-    <button onClick={funcrionOfAddNote}>Добавить город в список</button>
+    <button onClick={funcrionOfAddNote}>Добавить запись</button>
   )
 }
 
