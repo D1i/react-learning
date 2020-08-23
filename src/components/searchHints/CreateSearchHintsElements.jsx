@@ -14,19 +14,27 @@ class HintsContainer extends React.Component {
   }
 }
 
-function SearchHints(props) {
-    let hints = [];
-    {request(props.inputValue).then(fullInfoCity => {
-      hints = [];
+class SearchHints extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hints: [],
+  }
+  }
+  render() {
+    {request(this.props.inputValue).then(fullInfoCity => {
+      this.setState({hints: []});
       fullInfoCity.map(city => {
-        hints.push(<div onClick={props.setInputValue} value={city.value}>{city.value}</div>)
-      }
-    )})}
+      this.setState((state, props) => ({
+        hints: [...state.hints, <div onClick={this.props.setInputValue} value={city.value}>{city.value}</div>]
+      }));
+    })})}
     return (
       <div>
-        {hints}
+        {this.state.hints}
       </div>
     )
+  }
 }
 
 export default HintsContainer;
