@@ -24,7 +24,9 @@ class CreateFiledOfInputAndAddButtons extends React.Component {
         <input
         type="text"
         onChange={this.handleChange}
-        value={this.state.inputValue} />
+        value={this.state.inputValue}
+        id="address-input"
+        />
         {createButtonAdd(this.props.addNote, this.state.inputValue, this.clearFiled)}
         {createButtonClear(this.props.clearNoteList)}
       </div>
