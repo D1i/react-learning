@@ -23,6 +23,7 @@ class SearchHints extends React.Component {
   }
   render() {
     {request(this.props.inputValue).then(fullInfoCity => {
+      console.log("26");
       this.setState({hints: []});
       fullInfoCity.map(city => {
       this.setState((state, props) => ({
