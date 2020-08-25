@@ -1,8 +1,9 @@
 import React from 'react';
+import style from "../../style.css";
 
 function createButtonClear(methodClearNoteList) {
   return (
-    <button onClick={methodClearNoteList}>Очистить список записей</button>
+    <button className={style.buttonControlCityList} onClick={methodClearNoteList}>Очистить список записей</button>
   )
 }
 

@@ -1,12 +1,14 @@
 import React from 'react';
+import style from "../../style.css";
+
 
 function createButtonAdd(methodAddNote, value, clearFiledFunction) {
-  function funcrionOfAddNote() {
+  function functionOfAddNote() {
     methodAddNote(value);
-    clearFiledFunction()
+    clearFiledFunction();
   }
   return (
-    <button onClick={funcrionOfAddNote}>Добавить запись</button>
+    <button className={style.buttonControlCityList} onClick={functionOfAddNote}>Добавить запись</button>
   )
 }
 

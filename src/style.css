@@ -1,0 +1,42 @@
+.mainComponentContainer,
+.inputBarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonControlCityList {
+    width: 200px;
+    background-color: #e8e8e8;
+    border: none;
+    outline: none;
+    margin-top: 5px;
+}
+
+.buttonControlCityList:active {
+    background-color: #cbcbcb;
+}
+
+.inputSearchCity {
+    width: 300px;
+    padding: 5px 20px 5px 5px;
+    border: none;
+    border: 2px solid #f2f2f2;
+    outline-color: #bfbffa;
+}
+
+.hintsCityContainer {
+    width: 300px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.hintCity {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    margin-top: 5px;
+}
+
+.cityListContainer {
+    width: 300px;
+}

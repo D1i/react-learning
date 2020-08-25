@@ -1,8 +1,7 @@
 function request(textRequest) {
   const url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address";
-  const token = "dd297d84770c4e317083771a6c94f597021f5761";
+  const token = "746b57b2d19ceab7604d3448318354f90a0e7810";
   const query = textRequest;
-  let result = null;
 
   const options = {
     method: "POST",
@@ -15,7 +14,7 @@ function request(textRequest) {
     },
     body: JSON.stringify({ query: query }, " ")
   };
-  result = fetch(url, options)
+  const result = fetch(url, options)
     .then(response => response.text())
     .then(resultJSON => JSON.parse(resultJSON).suggestions);
 
