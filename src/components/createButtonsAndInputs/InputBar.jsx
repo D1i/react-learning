@@ -50,9 +50,9 @@ class CreateInputBar extends React.Component {
         />
         <CreateButtonBar
           addNote={this.props.addNote}
+          clearNoteList={this.props.clearNoteList}
           inputValue={this.state.inputValue}
           clearFiled={this.clearFiled}
-          clearNoteList={this.props.clearNoteList}
         />
         <SearchHints
           hints={this.state.hints}
