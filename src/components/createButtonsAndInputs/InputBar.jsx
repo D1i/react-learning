@@ -25,10 +25,9 @@ class CreateInputBar extends React.Component {
   handleChange = (event) => {
     this.setState({ inputValue: event.target.value });
     request(event.target.value).then(fullInfoCity => {
-      let hintsList = fullInfoCity.map(({value}) => {
+      return fullInfoCity.map(({value}) => {
         return <div className={style.hintCity} key={value + "-" + Math.random()} onClick={this.selectHint}>{value}</div>;
       });
-      return hintsList
     }).then(hints => {
       this.setState({hints});
     })
