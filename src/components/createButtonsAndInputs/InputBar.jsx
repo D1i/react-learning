@@ -1,7 +1,6 @@
 import React from 'react';
 
-import createButtonAdd from '../createButtonsAndInputs/createButtonAdd.jsx';
-import createButtonClear from '../createButtonsAndInputs/createButtonClear.jsx';
+import CreateButtonBar from './createButtonBar.jsx';
 import SearchHints from "../searchHints/CreateSearchHintsElements.jsx"
 import request from "../../services/request-response.js";
 import style from "../../style.css";
@@ -50,8 +49,12 @@ class CreateInputBar extends React.Component {
           value={this.state.inputValue}
           placeholder="Введите город"
         />
-        {createButtonAdd(this.props.addNote, this.state.inputValue, this.clearFiled)}
-        {createButtonClear(this.props.clearNoteList, this.state.closeHintsBar)}
+        <CreateButtonBar
+          addNote={this.props.addNote}
+          inputValue={this.state.inputValue}
+          clearFiled={this.clearFiled}
+          clearNoteList={this.props.clearNoteList}
+        />
         <SearchHints
           hints={this.state.hints}
         />
