@@ -1,9 +1,9 @@
 import React from 'react';
-import CreateElementContainerNoteList from "./createContainerNoteList/CreateContainerNoteList.jsx";
-import CreateInputBar from "./createButtonsAndInputs/InputBar";
+import ContainerNoteList from "./containerNoteList/ContainerNoteList.jsx";
+import InputBar from "./buttonsAndInputs/InputBar";
 import style from "style.css"
 
-export default class InitInputAndButton extends React.Component {
+class InitInputAndButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,18 +25,19 @@ export default class InitInputAndButton extends React.Component {
   };
 
   render() {
-    const noteList = this.state.noteList;
     return (
       <div className={style.mainComponentContainer}>
-        <CreateInputBar
+        <InputBar
           functionOfAddNote={this.addNote}
           addNote={this.addNote}
-          clearNoteList={this.clearNoteList}
+          handleClear={this.clearNoteList}
         />
-        <CreateElementContainerNoteList
+        <ContainerNoteList
           noteList={this.state.noteList}
         />
       </div>
     )
   }
 }
+
+export default InitInputAndButton;

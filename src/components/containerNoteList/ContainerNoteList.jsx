@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "../../style.css";
 
-function CreateElementContainerNoteList(props) {
+function ContainerNoteList(props) {
   return (
     <ul className={style.cityListContainer}>
       {props.noteList.map((value) =>
@@ -13,4 +13,4 @@ function CreateElementContainerNoteList(props) {
   )
 }
 
-export default CreateElementContainerNoteList;
+export default ContainerNoteList;
